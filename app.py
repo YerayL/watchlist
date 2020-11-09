@@ -48,10 +48,11 @@ def admin(username, password):
     if user is not None:
         click.echo('Updating user...')
         user.username = username
+        user.name = username
         user.set_password(password)  # 设置密码
     else:
         click.echo('Creating user...')
-        user = User(username=username, name='Admin')
+        user = User(username=username, name=username)
         user.set_password(password)  # 设置密码
         db.session.add(user)
 
@@ -123,7 +124,7 @@ def forge():
     db.create_all()
 
     # 全局的两个变量移动到这个函数内
-    name = 'Grey Li'
+    name = 'YinYu Lan'
     movies = [
         {'title': 'My Neighbor Totoro', 'year': '1988'},
         {'title': 'Dead Poets Society', 'year': '1989'},
