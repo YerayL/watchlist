@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
 import unittest
 
-from app import app, db, Movie, User
+from watchlist import app, db
+from watchlist.models import Movie, User
+from watchlist.commands import forge, initdb
+
 
 class WatchlistTestCase(unittest.TestCase):
 
@@ -233,10 +237,6 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertEqual(User.query.count(), 1)
         self.assertEqual(User.query.first().username, 'peter')
         self.assertTrue(User.query.first().validate_password('456'))
-
-
-if __name__ == '__main__':
-    unittest.main()
 
 
 if __name__ == '__main__':
